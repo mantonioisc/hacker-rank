@@ -8,6 +8,9 @@ import java.util.stream.IntStream;
 /*
 anagram
 margana
+
+abcde
+xyzwf
  */
 public class Solution {
     static boolean isAnagram(String a, String b) {
@@ -59,13 +62,34 @@ public class Solution {
         }
     }
 
+    static boolean isAnagram4(String a, String b) {
+        if (a.length() != b.length() || a.length() <= 1) {
+            return false;
+        }
+
+        int[] freq = new int['z' - 'a' + 1];
+        for (int i = 0; i < a.length(); i++) {
+            int iA = Character.toLowerCase(a.charAt(i)) - 'a';
+            int iB = Character.toLowerCase(b.charAt(i)) - 'a';
+            freq[iA]++;
+            freq[iB]--;
+        }
+
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
         String a = scan.next();
         String b = scan.next();
         scan.close();
-        boolean ret = isAnagram3(a, b);
+        boolean ret = isAnagram4(a, b);
         System.out.println((ret) ? "Anagrams" : "Not Anagrams");
     }
 }

@@ -2,6 +2,43 @@ package javatrack.datastructures.arraylist;
 
 import java.util.*;
 
+/**
+ * 5
+ * 5 41 77 74 22 44
+ * 1 12
+ * 4 37 34 36 52
+ * 0
+ * 3 20 22 33
+ * 5
+ * 1 3
+ * 3 4
+ * 3 1
+ * 4 3
+ * 5 5
+ *
+ * ----------------
+ *
+ * 8
+ * 7 43 35 26 34 78 99 70
+ * 3 71 11 16
+ * 8 70 19 42 30 84 20 57 45
+ * 0
+ * 1 20
+ * 0
+ * 0
+ * 0
+ * 10
+ * 5 1
+ * 5 7
+ * 1 7
+ * 5 3
+ * 5 2
+ * 4 7
+ * 5 2
+ * 1 2
+ * 4 1
+ * 2 3
+ */
 public class Solution {
 
     public static void main(String[] args) {

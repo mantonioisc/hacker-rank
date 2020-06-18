@@ -42,6 +42,24 @@ public class Solution {
         return i + leap >= game.length - 1;
     }
 
+    public static boolean canWinAnotherBadImplementation(int leap, int[] game) {
+        int position = 0;
+        while(game[position] == 0) {
+            if(position >= game.length - 1) {
+                return true;
+            } else if(position + leap >= game.length - 1){
+                return true;
+            } else if(position + 1 < game.length && game[position + 1] == 0) {
+                position++;
+            } else if(position + leap < game.length && game[position + leap] == 0) {
+                position = position + leap;
+            } else {
+                return false;
+            }
+        }
+        return position >= game.length - 1;
+    }
+
     public static boolean canWin(int leap, int[] game) {
         return isSolvable(game, leap, 0);
     }
@@ -53,6 +71,8 @@ public class Solution {
         } else if (i + 1 >= array.length || i + leap >= array.length) {
             isSolvable = true;
         } else {
+            //This is really important to avoid loops, for example 00111 with leap >= 3 when doing recursive calls
+            //for i+1 and i-1, if not marking a cell as non-solvable it will loop from index 0 to 1 to 0 to 1...and so on
             array[i] = 1;
 
             isSolvable = isSolvable(array, leap, i + leap) || isSolvable(array, leap, i + 1) || isSolvable(array, leap, i - 1);
